@@ -1,4 +1,4 @@
-#
+#   
 # CSE 3521 - Programming Assignment 00
 #
 # Input - a text file (input) whose first line contains a string
