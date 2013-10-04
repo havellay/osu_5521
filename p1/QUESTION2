@@ -1,0 +1,114 @@
+A Reflex Agent With State
+We will extend the above problem in the following ways:
+
+    We now have two conveyor belts
+        Here are some sample files for Belt A and Belt B
+    		The agent can choose to give PICKUP actions for each conveyor belt 
+			(PICKUP_A or PICKUP_B)
+        	These actions function like the PICKUP action above - the item at 
+			the front position on the respective belt (A or B) gets 
+			picked up
+    		The agent can choose to give ADVANCE actions for each conveyor belt
+			(ADVANCE_A or ADVANCE_B)
+        	These actions function like the ADVANCE action above - the 
+			respective belt (A or B) advances one position
+    		The agent can choose to give a STOP action
+        	This terminates the whole program, as above.  There is only one
+			STOP action, not one for each belt.
+
+    We now have two "fill slots" for items
+        Each slot holds one item
+        We want to find the two "worst" examples for quality control purposes
+        So we want these slots to hold the items with the largest sensor readings
+
+    If the agent is holding an item after a PICKUP action, it may choose to FILL one
+    of these two slots (FILL_1 or FILL_2)
+        The item then goes into that slot
+
+    If the agent wants to replace an item in a slot, it needs to DROP the item 
+    in that slot (DROP_1 or DROP_2)
+        The slot has a trapdoor in it controlled by the agent, so DROP just opens
+		the chute and sends the item in the slot to the garbage heap
+
+Our robot has a limited amount of power to control the belts and the robot arm
+So current power will be provided as a percept to the agent for it to make its 
+decisions
+
+The goal is to have the two items with the highest value possible in the agents FILL
+slots.  Note that the word "possible" is there - the agent only sees 4 things at a
+time (two from each belt) and must only make local decisions based on those items.
+The algorithm to implement this will necessarily be a greedy one, and so the best
+overall solution if you know what both belts look like is not necessarily the
+solution that your agent must arrive at.
+
+The robot the agent is controlling has a limited amount of power.  For this problem,
+assume that the robot has 20 "units" of power to begin with. The actions PICKUP,
+DROP, ADVANCE and FILL all cost one unit of power to perform (STOP can be performed
+for free).  When the system reaches 0 power the only action the agent can perform is
+to issue the STOP command.
+
+The Test Harness is responsible for keeping track of what is on the conveyor belt,
+the current power, and what is currently in the two fill slots. The agent should
+never directly touch any of these items.  It should only take in its input percepts
+and return back an action that the Test Harness must then perform.
+The agent should be written as a function:
+
+reflexAgentWithState(int belta_current, int belta_next, int beltb_current, int beltb_next, int current_power)
+
+and it should return an action.  Note that the agent does not get what is in the
+item slots as a current percept and is not allowed to access them directly, but
+it needs to know what's in them to make the appropriate decisions.
+How can we handle that problem?  (HINT:  This is a reflex agent with state -
+consider what the state needs to keep track of).
+
+The output for this section is similar to the output above.  The Test Harness
+should still print out the percepts it is passing to the agent as well as the action
+the agent wants performed.  For this problem, the agent should also print a line
+of output.  This line should include the elements of the agent's state -
+including it's current set of percepts (since percepts are part of the state). 
+It is up to you to decide what else you need in the state - anything you add to
+the agent's state beyond the input percepts should be output by the agent at this
+stage.
+
+A sample of what the output might look like for a single perception-action cycle
+might be:
+
+INPUT PERCEPTION: 2 3 5 6 20 (from test harness)
+AGENT STATE: (representation of state in agent, including percept)
+OUTPUT ACTION: xxx (from test harness, reporting agent's result)
+
+
+Grading:  To receive full credit for this portion of the assignment, your code must
+provide a function named reflexAgentWithState as defined above that returns an
+action, and the output produced must be correctly formatted and correctly produced
+given its inputs. Your agent function must base its decision only on the percepts 
+received and must NOT touch the items in the belt, the items in the fill slots, or
+the items it is currently holding directly.  Your Test Harness must NOT make any
+decisions itself - it can only provide percepts to the agent method and then perform
+the action chosen by the agent on the items on the conveyor belt.
+
+You may assume that we will give you well-formatted files that ends with two -1
+values.
+
+Submission
+Make sure that your code runs our our stdlinux environment and INCLUDE A TEXT FILE
+with your submission with instructions on how to run each part on our stdlinux
+environment.  Create a ZIP archive that includes ALL of the files needed to run your
+code (including elements from the code repository or the sample code provided above)
+as well as your instructions and upload that ZIP file to the dropbox on carmen. 
+Make sure your code is fully documented and includes your name in an obvious
+position at the top of each file you have written.  MAKE SURE YOUR CODE RUNS ON THE
+stdlinux ENVIRONMENT!  We will only be testing your code in this environment. 
+DO NOT TRY TO MAKE US FIGURE OUT HOW TO COMPILE AND RUN YOUR CODE.  If you do not
+provide instructions on how your code is to be compiled and executed on stdlinux WE
+WILL NOT EVEN LOOK AT YOUR CODE AND YOU WILL RECEIVE A ZERO FOR THE ASSIGNMENT. 
+
+Code Repository Disclaimer
+
+The code repository provided by the textbook authors is most likely very reliable
+code, however, be warned that I haven't tested it and don't guarantee that it will
+work as described. If you decide to use code from the repository, don't expect your
+instructor or the grader to debug it for you.
+
+Also, any code you use from the repository should be clearly credited. Do not make
+it appear to be your own work.

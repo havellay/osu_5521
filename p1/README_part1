@@ -1,0 +1,25 @@
+# CSE 3521 - Programming Assignment 01 (Part1)
+#
+# Input - one text file containing a single integer in each line and several
+#  such lines; this text files is expected to contain the ranks of the ojects
+#  coming down the Conveyer Belt in this environment. The assumption is that the 
+#  file is well formatted. Occurrence of two '-1' ranks in this text file
+#  will denote that we have reached the end of the belt
+#
+# Output - a sequence of text printed to stdout that explains the values input
+#  to this agent, the state of the agent and the action taken by the agent
+#
+#	by	Haribabu, Karpaka Vellaya (Hari)
+#	email	karpakavellaya.1@osu.edu
+#
+# Execution - this program requires the 'sys' and 'string' python modules
+#   execution syntax :
+#	'python part2.py [Belt_file]'
+#   if the input file 'Belt_file' is not specified by the user, then the
+#   default file "inp" that is provided with this code is used as input.
+#   An alternate method of providing custom input to the program would be 
+#   to edit the contents of the file "inp".
+#
+# For the last element in the belt, this agent always decides to PICKUP the item;
+# This is so that this program behaves in the same way as the example shown in
+# the Question

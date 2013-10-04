@@ -1,0 +1,28 @@
+# submitted by Karpaka Vellaya Haribabu
+#   karpakavellaya.1@osu.edu
+#
+# This code shows the different methods to transport robots across a cliff
+# given the limitations of battery power.
+# A limitation of the program is that it doesn't explicitly always tell the
+# cost of the complete transportation activity - However, the number should
+# be easily apparent from the output.
+#
+# for A* search, the heuristic employed is that each robot travels at the 
+# speed of the fastest robot in the bunch which is A
+#
+# the program should be executable through stdlinux
+#
+# to provide different output, the function FindTrueCost() would have to be
+# modified and different input would have to be supplied from the main()
+# method.
+#
+# This code is as though the robots are on the left side of the chasm and the
+# base station is on the right side of the chasm; all naming will follow this
+#
+# ABCDP
+#
+        # A -> 1 min
+        # B -> 2 min
+        # C -> 5 min
+        # D -> 10 min
+

@@ -1,0 +1,68 @@
+Write two different simple agents and a "test harness" or "world simulator" for them to run in.
+
+examine the conveyor belt and remove the worst products
+
+become familiar with the difference between a reflex agent and a reflect state agent
+
+may use the code repository in the book
+recommend using the pseudocode from the textbook or from the course (for reflex agent) and page 50 (for reflex agent with state aka model-based reflex agent)
+
+pseudocode on slide 12 of the Intelligent Agents lecture notes
+
+
+products move along the conveyor belt and are examined by our agent
+agent has 2 quality sensors
+quality sensor -> gives ranking of the number of flaws found in each item (higher rank == more flaws)
+
+can only remove the product at the end of belt; compares two items; if one has more flaws than the item behind it, remove it from the belt
+
+belt :
+	list of numbers
+sensors :
+	items of best quality == returns 1
+	items of lower quality > returns 1
+	if no item on belt; 	returns 0
+	end of belt		returns -1
+agent :
+	picks item up from eob if it has larger number of flaws
+	when eob, shut the belt off
+	
+"you will also need to build a 'test harness' or 'world simulator' to operate the belt based on actions returned by the agent. your test harness can be the main method of the program; while your ReflexAgent must be a separate function"
+
+Test Harness :
+	read an input file where the belt is represented as a list of numbers
+	take the action from the reflex agent and perform the action
+
+When the TestHarness picks up an item from the front of the belt, the value at the front of the belt becomes 0 (because there is no item there any longer).
+
+reflexAgent(int percept1, int percept2)
+	and returns a single action
+		this action can be string, integer or character
+		PICKUP, ADVANCE, STOP
+		"it is up to you to decide how the agent should treat the final
+		 item on the belt but remember it must make that decision
+		 based on only the percepts that it receives at that moment --
+		 that is an agent without state"
+			document how I choose to handle the last item in the
+			belt problem and why
+
+Test Harness messages :
+	INPUT PERCEPTION: X X
+	OUTPUT ACTION: [PICKUP/ADVANCE/STOP]
+
+An example sequence (for a different file than the one provided):
+
+INPUT PERCEPTION: 1 3
+OUTPUT ACTION: ADVANCE
+INPUT PERCEPTION: 3 2
+OUTPUT ACTION: PICKUP
+INPUT PERCEPTION: 0 2
+OUTPUT ACTION: ADVANCE
+INPUT PERCEPTION: 2 27
+OUTPUT ACTION: ADVANCE
+INPUT PERCEPTION: 27 -1
+OUTPUT ACTION: PICKUP
+INPUT PERCEPTION: 0 -1
+OUTPUT ACTION: ADVANCE
+INPUT PERCEPTION: -1 -1
+OUTPUT ACTION: STOP

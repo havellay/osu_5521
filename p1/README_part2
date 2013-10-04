@@ -1,0 +1,25 @@
+# CSE 3521 - Programming Assignment 01 (Part2)
+#
+# Input - two text files containing a single integer in each line and several
+#  such lines; these text files are expected to contain the ranks of the ojects
+#  coming down the Conveyer Belts in our environment. The assumption is that the 
+#  files are well formatted. Occurrence of two '-1' ranks in these text files
+#  will denote that we have reached the end of that belt
+#
+# Output - a sequence of text printed to stdout that explains the values input
+#  to our agent, the state of the agent and the action taken by the agent
+#
+#	by	Haribabu, Karpaka Vellaya (Hari)
+#	email	karpakavellaya.1@osu.edu
+#
+# Execution - this program requires the 'sys' and 'string' python modules
+#   execution syntax :
+#	'python part2.py [BeltA_file BeltB_file]'
+#   if the input files 'BeltA_file' and 'BeltB_file' are not specified by the
+#   user, then the default files "Belt_A" and "Belt_B" that are provided with
+#   this code are used as input. An alternate method of providing custom input
+#   to the program would be to edit the contents of the files "Belt_A" and
+#   "Belt_B". This program is governed by a parameter that denotes the energy
+#   or power available to our agent; this is hardcoded to 20 units. To change
+#   this, the only way is to change the line in the main() method that assigns
+#   20 to current_power to any desired value

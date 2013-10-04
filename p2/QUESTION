@@ -1,0 +1,56 @@
+CSE 3521: Survey of Artificial Intelligence I
+
+Programming Assignment 02: Search Algorithms
+
+ - 4 Robots in one side of a chasm
+ - 2 can cross the bridge at time with a power pack
+ - one has return to get the remaining robots with the power pack
+ - Code search algorithms
+ - Each cross the bridge at different speeds:
+    A-1     1 minute
+    BR-37   2 min
+    C3-P7   5
+    DB99    10
+ - a pair crosses the bridge at the speed of the slower robot
+ - four search agents;
+    DFSAgent : a depth-first search agent
+    BFSAgent : a breadth-first search agent
+    UCAgent : a uniform-cost search agent
+    AStarAgent : an A* search agent
+        For A*, use the heuristic that everyone moves at the same speed as the
+        fastest robot (Think : why is this admissible?)
+    DFS and BFS won't give the best solution; UC and AS will give the best
+    solution
+ - code the Agent and Test Harness code:
+   Test harness will call the search agent wih two strings
+        2 strings containing the letters "ABCDP" for robots assigned by the
+            first letter of their names and P for power : 1 string for the
+            starting side and the other for things in the target destination
+        "This allows us to consider situations where the robots screwed up the
+         order of operations and need help planning how to finish up optimally."
+        Eg. "ABCDP","" : traditional start
+            "AC","BDP" : A and C are on the start side and B and D have crossed
+                with the power pack : this is a screw up
+ - check for the code : everyone can cross the bridge in 17 minutes.
+ - AGENT:
+    takes the two strings and return a list of actions that correspond to the
+    optimal sequence from the state;
+    report each node expanded off of the queue (should include minimally state,
+    parent state, relevant cost(s) and depth) at the end of the number of nodes
+    expanded in the search and the total path cost of the optimal path.
+ - TEST HARNESS:
+    should report the list of actions;
+ - If you use functions such as ExpandNode and QueueingFunction, it will be
+   easy to write the four agents using most of the same code over and over again
+ - Will be graded on whether it accepts input in the specified format; it should
+   provide them a way to call each agent with two strings from the command line
+ - DFS shouldn't go to an infinite loop ; sove by implementing iterative
+   deepening, implementing a simpler depth-limited search, or checking for
+   repeated states. (Indicate the README file which strategy is employed)
+
+
+EXTRA CREDIT (up to +10 points)
+    code the 4 sudoku problem from the homework2 as classical search problem
+    SHOULD reuse the code from the flashlight problem
+    allow them to make changes to the input set either from commandline or by
+    changing a text file
